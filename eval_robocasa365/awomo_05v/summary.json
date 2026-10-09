@@ -1,0 +1,329 @@
+{
+ "trials_per_task": 30,
+ "groups": {
+  "atomic_seen": {
+   "success": 459,
+   "episodes": 540,
+   "success_rate": 85.0
+  },
+  "composite_seen": {
+   "success": 290,
+   "episodes": 480,
+   "success_rate": 60.42
+  },
+  "composite_unseen": {
+   "success": 189,
+   "episodes": 480,
+   "success_rate": 39.38
+  }
+ },
+ "overall": {
+  "success": 938,
+  "episodes": 1500,
+  "success_rate": 62.53
+ },
+ "tasks": {
+  "CloseBlenderLid": {
+   "group": "atomic_seen",
+   "success": 10,
+   "episodes": 30,
+   "success_rate": 33.33
+  },
+  "CloseFridge": {
+   "group": "atomic_seen",
+   "success": 30,
+   "episodes": 30,
+   "success_rate": 100.0
+  },
+  "CloseToasterOvenDoor": {
+   "group": "atomic_seen",
+   "success": 27,
+   "episodes": 30,
+   "success_rate": 90.0
+  },
+  "CoffeeSetupMug": {
+   "group": "atomic_seen",
+   "success": 26,
+   "episodes": 30,
+   "success_rate": 86.67
+  },
+  "NavigateKitchen": {
+   "group": "atomic_seen",
+   "success": 23,
+   "episodes": 30,
+   "success_rate": 76.67
+  },
+  "OpenCabinet": {
+   "group": "atomic_seen",
+   "success": 28,
+   "episodes": 30,
+   "success_rate": 93.33
+  },
+  "OpenDrawer": {
+   "group": "atomic_seen",
+   "success": 29,
+   "episodes": 30,
+   "success_rate": 96.67
+  },
+  "OpenStandMixerHead": {
+   "group": "atomic_seen",
+   "success": 29,
+   "episodes": 30,
+   "success_rate": 96.67
+  },
+  "PickPlaceCounterToCabinet": {
+   "group": "atomic_seen",
+   "success": 24,
+   "episodes": 30,
+   "success_rate": 80.0
+  },
+  "PickPlaceCounterToStove": {
+   "group": "atomic_seen",
+   "success": 26,
+   "episodes": 30,
+   "success_rate": 86.67
+  },
+  "PickPlaceDrawerToCounter": {
+   "group": "atomic_seen",
+   "success": 26,
+   "episodes": 30,
+   "success_rate": 86.67
+  },
+  "PickPlaceSinkToCounter": {
+   "group": "atomic_seen",
+   "success": 29,
+   "episodes": 30,
+   "success_rate": 96.67
+  },
+  "PickPlaceToasterToCounter": {
+   "group": "atomic_seen",
+   "success": 27,
+   "episodes": 30,
+   "success_rate": 90.0
+  },
+  "SlideDishwasherRack": {
+   "group": "atomic_seen",
+   "success": 25,
+   "episodes": 30,
+   "success_rate": 83.33
+  },
+  "TurnOffStove": {
+   "group": "atomic_seen",
+   "success": 20,
+   "episodes": 30,
+   "success_rate": 66.67
+  },
+  "TurnOnElectricKettle": {
+   "group": "atomic_seen",
+   "success": 30,
+   "episodes": 30,
+   "success_rate": 100.0
+  },
+  "TurnOnMicrowave": {
+   "group": "atomic_seen",
+   "success": 21,
+   "episodes": 30,
+   "success_rate": 70.0
+  },
+  "TurnOnSinkFaucet": {
+   "group": "atomic_seen",
+   "success": 29,
+   "episodes": 30,
+   "success_rate": 96.67
+  },
+  "DeliverStraw": {
+   "group": "composite_seen",
+   "success": 13,
+   "episodes": 30,
+   "success_rate": 43.33
+  },
+  "GetToastedBread": {
+   "group": "composite_seen",
+   "success": 13,
+   "episodes": 30,
+   "success_rate": 43.33
+  },
+  "KettleBoiling": {
+   "group": "composite_seen",
+   "success": 22,
+   "episodes": 30,
+   "success_rate": 73.33
+  },
+  "LoadDishwasher": {
+   "group": "composite_seen",
+   "success": 20,
+   "episodes": 30,
+   "success_rate": 66.67
+  },
+  "PackIdenticalLunches": {
+   "group": "composite_seen",
+   "success": 10,
+   "episodes": 30,
+   "success_rate": 33.33
+  },
+  "PreSoakPan": {
+   "group": "composite_seen",
+   "success": 25,
+   "episodes": 30,
+   "success_rate": 83.33
+  },
+  "PrepareCoffee": {
+   "group": "composite_seen",
+   "success": 10,
+   "episodes": 30,
+   "success_rate": 33.33
+  },
+  "RinseSinkBasin": {
+   "group": "composite_seen",
+   "success": 22,
+   "episodes": 30,
+   "success_rate": 73.33
+  },
+  "ScrubCuttingBoard": {
+   "group": "composite_seen",
+   "success": 27,
+   "episodes": 30,
+   "success_rate": 90.0
+  },
+  "SearingMeat": {
+   "group": "composite_seen",
+   "success": 8,
+   "episodes": 30,
+   "success_rate": 26.67
+  },
+  "SetUpCuttingStation": {
+   "group": "composite_seen",
+   "success": 22,
+   "episodes": 30,
+   "success_rate": 73.33
+  },
+  "StackBowlsCabinet": {
+   "group": "composite_seen",
+   "success": 27,
+   "episodes": 30,
+   "success_rate": 90.0
+  },
+  "SteamInMicrowave": {
+   "group": "composite_seen",
+   "success": 23,
+   "episodes": 30,
+   "success_rate": 76.67
+  },
+  "StirVegetables": {
+   "group": "composite_seen",
+   "success": 10,
+   "episodes": 30,
+   "success_rate": 33.33
+  },
+  "StoreLeftoversInBowl": {
+   "group": "composite_seen",
+   "success": 18,
+   "episodes": 30,
+   "success_rate": 60.0
+  },
+  "WashLettuce": {
+   "group": "composite_seen",
+   "success": 20,
+   "episodes": 30,
+   "success_rate": 66.67
+  },
+  "ArrangeBreadBasket": {
+   "group": "composite_unseen",
+   "success": 23,
+   "episodes": 30,
+   "success_rate": 76.67
+  },
+  "ArrangeTea": {
+   "group": "composite_unseen",
+   "success": 16,
+   "episodes": 30,
+   "success_rate": 53.33
+  },
+  "BreadSelection": {
+   "group": "composite_unseen",
+   "success": 19,
+   "episodes": 30,
+   "success_rate": 63.33
+  },
+  "CategorizeCondiments": {
+   "group": "composite_unseen",
+   "success": 4,
+   "episodes": 30,
+   "success_rate": 13.33
+  },
+  "CuttingToolSelection": {
+   "group": "composite_unseen",
+   "success": 9,
+   "episodes": 30,
+   "success_rate": 30.0
+  },
+  "GarnishPancake": {
+   "group": "composite_unseen",
+   "success": 29,
+   "episodes": 30,
+   "success_rate": 96.67
+  },
+  "GatherTableware": {
+   "group": "composite_unseen",
+   "success": 3,
+   "episodes": 30,
+   "success_rate": 10.0
+  },
+  "HeatKebabSandwich": {
+   "group": "composite_unseen",
+   "success": 2,
+   "episodes": 30,
+   "success_rate": 6.67
+  },
+  "MakeIceLemonade": {
+   "group": "composite_unseen",
+   "success": 18,
+   "episodes": 30,
+   "success_rate": 60.0
+  },
+  "PanTransfer": {
+   "group": "composite_unseen",
+   "success": 0,
+   "episodes": 30,
+   "success_rate": 0.0
+  },
+  "PortionHotDogs": {
+   "group": "composite_unseen",
+   "success": 6,
+   "episodes": 30,
+   "success_rate": 20.0
+  },
+  "RecycleBottlesByType": {
+   "group": "composite_unseen",
+   "success": 17,
+   "episodes": 30,
+   "success_rate": 56.67
+  },
+  "SeparateFreezerRack": {
+   "group": "composite_unseen",
+   "success": 2,
+   "episodes": 30,
+   "success_rate": 6.67
+  },
+  "WaffleReheat": {
+   "group": "composite_unseen",
+   "success": 12,
+   "episodes": 30,
+   "success_rate": 40.0
+  },
+  "WashFruitColander": {
+   "group": "composite_unseen",
+   "success": 19,
+   "episodes": 30,
+   "success_rate": 63.33
+  },
+  "WeighIngredients": {
+   "group": "composite_unseen",
+   "success": 10,
+   "episodes": 30,
+   "success_rate": 33.33
+  }
+ },
+ "complete": true,
+ "missing": []
+}
