@@ -16,17 +16,17 @@
 
 ## 📖 Introduction
 
-Awomo-0.5 provides inference and evaluation code for embodied policies in simulation. It includes two architecture variants with a shared action interface:
+Awomo-0.5 is a codebase for training, evaluating, and running embodied policies in simulation. It provides two architecture variants with a shared action interface:
 
 - **Awomo-0.5I** (Awomo-0.5-Image) processes image observations.
 - **Awomo-0.5V** (Awomo-0.5-Video) processes video observations and temporal context.
 
 The release targets five embodied simulation benchmarks: LIBERO Plus, MolmoSpaces, RoboTwin 2.0, RoboDojo, and RoboCasa.
-This repository currently contains the RoboCasa365 evaluation; the other benchmarks will be released progressively.
+This release contains the inference code and the RoboCasa365 evaluation; the training code and the other benchmarks will be released progressively.
 
 ## ✨ Highlights
 
-- 2 architecture variants under one evaluation interface.
+- 2 architecture variants under one training and evaluation interface (training code coming).
 - 5 benchmark adapters for embodied simulation evaluation (RoboCasa365 released, others coming).
 - 14 planned model releases.
 
