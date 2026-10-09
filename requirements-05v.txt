@@ -1,0 +1,14 @@
+# Policy server environment for Awomo-0.5V (Python 3.11, CUDA 12.8)
+torch==2.8.0
+torchvision==0.23.0
+transformers==5.5.0
+diffusers==0.30.2
+einops==0.8.1
+sentencepiece==0.2.1
+huggingface_hub==1.30.0
+pillow==11.3.0
+imageio-ffmpeg==0.6.0
+msgpack==1.2.3
+numpy==2.2.5
+# Optional (Ampere or newer): flash-attn==2.8.3 (pip install flash-attn==2.8.3 --no-build-isolation).
+# Without it attention falls back to PyTorch SDPA, which is numerically close but not bit-identical.

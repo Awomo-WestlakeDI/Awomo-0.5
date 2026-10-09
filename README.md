@@ -6,9 +6,9 @@
 
 <h1>Awomo-0.5: World Action Model Pre-trained at Scale</h1>
 
-<p><b>🖼️ AMO-Image</b> | <b>🎥 AMO-Video</b> | <a href="https://robodojo-benchmark.com/LeaderBoard"><b>🥈 #2 on RoboDojo</b></a></p>
+<p><b>🖼️ Awomo-0.5I</b> | <b>🎥 Awomo-0.5V</b> | <a href="https://robodojo-benchmark.com/LeaderBoard"><b>🥈 #2 on RoboDojo</b></a></p>
 
-<p>🤗 Hugging Face: <b>TBD</b> | 🤖 ModelScope: <b>TBD</b> | 📄 Paper: <b>TBD</b> | 🖥️ Demo: <b>TBD</b></p>
+<p>🤗 Hugging Face: <a href="https://huggingface.co/Auwomo"><b>Auwomo</b></a> | 🤖 ModelScope: <b>TBD</b> | 📄 Paper: <b>TBD</b> | 🖥️ Demo: <b>TBD</b></p>
 
 <p><a href="#introduction">Introduction</a> | <a href="#checkpoints">Checkpoints</a> | <a href="#documentation">Documentation</a> | <a href="#citation">Citation</a></p>
 
@@ -18,15 +18,16 @@
 
 Awomo-0.5 is a codebase for training, evaluating, and running embodied policies in simulation. It provides two architecture variants with a shared action interface:
 
-- **AMO-Image** processes image observations.
-- **AMO-Video** processes video observations and temporal context.
+- **Awomo-0.5I** (Awomo-0.5-Image) processes image observations.
+- **Awomo-0.5V** (Awomo-0.5-Video) processes video observations and temporal context.
 
 The release targets five embodied simulation benchmarks: LIBERO Plus, MolmoSpaces, RoboTwin 2.0, RoboDojo, and RoboCasa.
+This release contains the inference code and the RoboCasa365 evaluation; the training code and the other benchmarks will be released progressively.
 
 ## ✨ Highlights
 
-- 2 architecture variants under one training and evaluation interface.
-- 5 benchmark adapters for embodied simulation evaluation.
+- 2 architecture variants under one training and evaluation interface (training code coming).
+- 5 benchmark adapters for embodied simulation evaluation (RoboCasa365 released, others coming).
 - 14 planned model releases.
 
 ## 🔔 News
@@ -37,7 +38,7 @@ The release targets five embodied simulation benchmarks: LIBERO Plus, MolmoSpace
 
 Overall success rates are shown in parentheses.
 
-| **AMO-Image** | **AMO-Video** |
+| **Awomo-0.5I** | **Awomo-0.5V** |
 | :-------- | :---------------- |
 | Base | Base |
 | LIBERO Plus (93.5) | LIBERO Plus (91.1) |
@@ -45,17 +46,21 @@ Overall success rates are shown in parentheses.
 | RoboTwin 2.0 Full (96.1) | RoboTwin 2.0 Full |
 | RoboTwin 2.0 Clean-2-Random (79.2) | RoboTwin 2.0 Clean-2-Random |
 | RoboDojo (35.3, [🥈 #2](https://robodojo-benchmark.com/LeaderBoard)) | RoboDojo |
-| RoboCasa | RoboCasa |
+| [RoboCasa365](eval_robocasa365/README.md) (64.4, [🤗](https://huggingface.co/Auwomo/Awomo-0.5I-RoboCasa365)) | [RoboCasa365](eval_robocasa365/README.md) (62.5, [🤗](https://huggingface.co/Auwomo/Awomo-0.5V-RoboCasa365)) |
 
-Model artifact links, configuration files, and checksums will be published with the corresponding checkpoint release.
+Released checkpoints are on [Hugging Face](https://huggingface.co/Auwomo); each includes `awomo_config.json` and `SHA256SUMS`.
 
 ## 📚 Documentation
 
-Operational instructions for installation, training, evaluation, inference, and reproducibility are available in [docs/TRAINING_AND_INFERENCE.md](docs/TRAINING_AND_INFERENCE.md).
+- [Deployment](docs/DEPLOYMENT.md): policy server environment and startup.
+- [RoboCasa365 evaluation](eval_robocasa365/README.md)
 
 ## 📜 License
 
-The Awomo-0.5 license and third-party component licenses will be listed with the public model release.
+The code in this repository is released under the [Apache License 2.0](LICENSE). The model weights on
+[Hugging Face](https://huggingface.co/Auwomo) are released under CC BY-NC 4.0 (see the `LICENSE.md` of each checkpoint).
+Base models downloaded by the code (Qwen3-VL-4B-Instruct, FLUX.2-klein-base-4B, Wan2.2-TI2V-5B) remain under their
+own licenses.
 
 ## 🤝 Acknowledgements
 

@@ -1,0 +1,2 @@
+# Simulator environment for RoboCasa365 (in addition to robocasa / robosuite)
+msgpack==1.2.3
