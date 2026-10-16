@@ -75,4 +75,17 @@ Parts of this repository are adapted from [PatchWAM](https://github.com/Tianheng
   version = {0.5},
   year    = {2026},
 }
+
+@article{team2026awomo,
+  title={Awomo-0.5 Technical Report},
+  author={Team, Awomo-WAM},
+  year={2026}
+}
+
+@article{wang2026action,
+  title={An Action Is Worth One Patch: Unified World-Action Modeling with PatchWAM},
+  author={Wang, Tianheng and Xie, Zhou and Jia, Heng and Xu, Jianhua and Zhang, Tong and Yu, Kaicheng},
+  journal={arXiv preprint arXiv:2609.25961},
+  year={2026}
+}
 ```
