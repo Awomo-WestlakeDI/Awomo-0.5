@@ -5,3 +5,8 @@ __pycache__/
 logs/
 out/
 checkpoints/
+
+# macOS transfer metadata and local training outputs
+._*
+.DS_Store
+outputs/

@@ -1,5 +1,11 @@
 # RoboCasa365 Evaluation
 
+Evaluation integration added: **2026-10-09**. Documentation updated: **2026-10-20**.
+
+This directory is evaluation-only for Awomo-0.5I and Awomo-0.5V; it does not contain a RoboCasa SFT recipe.
+RoboDojo SFT is documented [separately](../training/robodojo/README.md), and its inference adapter runs in XPolicyLab.
+The 2026-10-20 documentation update does not change the RoboCasa model entrypoints, checkpoints or evaluation settings.
+
 50 target tasks × 30 trials (1,500 episodes), `split=pretrain`, official task horizons.
 The policy server and the RoboCasa365 simulator run in two separate environments.
 
