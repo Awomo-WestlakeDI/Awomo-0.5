@@ -81,15 +81,16 @@ class ActionPatchModel(nn.Module):
         return used.unflatten(-1, (self.action_dim, self.repeats)).mean(-1) / self.action_scale
 
     def pack_state(self, context, text_mask, state):
+        """Compact valid text in order, then insert state; supports right-padding and prefix_v2 gaps."""
         batch, length, dim = context.shape
-        lengths = text_mask.sum(-1)
-        positions = torch.arange(length, device=context.device)
+        counts = text_mask.sum(1)
+        valid_rank = text_mask.long().cumsum(1) - 1
+        invalid_rank = (~text_mask).long().cumsum(1) - 1
+        destinations = torch.where(text_mask, valid_rank, counts[:, None] + 1 + invalid_rank)
         packed = context.new_zeros(batch, length + 1, dim)
-        destinations = positions[None] + (~text_mask).long()
-        packed = packed.scatter(1, destinations[..., None].expand(batch, length, dim), context)
-        indices = lengths[:, None, None].expand(batch, 1, dim)
-        packed = packed.scatter(1, indices, self.proprio_encoder(state)[:, None])
-        mask = torch.arange(length + 1, device=context.device)[None] <= lengths[:, None]
+        packed.scatter_(1, destinations[..., None].expand(batch, length, dim), context)
+        packed[torch.arange(batch, device=context.device), counts] = self.proprio_encoder(state)
+        mask = torch.arange(length + 1, device=context.device)[None] <= counts[:, None]
         return packed, mask
 
     @staticmethod
@@ -111,29 +112,49 @@ class ActionPatchModel(nn.Module):
         ids[..., 2] = torch.arange(width, device=device)[None, :]
         return ids.reshape(-1, 4)
 
-    def forward(self, reference, noisy_image, noisy_action, context, text_mask, state, timestep, image_grid,
-                history, history_ids, history_valid):
+    def forward(self, reference, noisy_image, noisy_action, context, text_mask, state, timestep, image_grid=None,
+                history=None, history_ids=None, history_valid=None, *, reference_ids=None, target_ids=None,
+                condition_mask=None):
+        """Normalize the explicit input layout, then use one shared Transformer forward."""
         batch, image_length, _ = reference.shape
-        context, text_mask = self.pack_state(context, text_mask, state)
         horizon = noisy_action.shape[1]
-        image_ids = torch.cat([self.image_ids(*image_grid, 10.0, reference.device),
-                               self.image_ids(*image_grid, 0.0, reference.device),
-                               torch.zeros(horizon, 4, device=reference.device)])
-        image_ids[-horizon:, 0] = 20
-        image_ids[-horizon:, 3] = torch.arange(horizon, device=reference.device)
-        text_ids = torch.zeros(context.shape[1], 4, device=reference.device)
+        packed_requested = any(value is not None for value in (reference_ids, target_ids, condition_mask))
+        if not packed_requested:
+            if any(value is None for value in (image_grid, history, history_ids, history_valid)):
+                raise ValueError("Separate conditions require image_grid, history, history_ids and history_valid")
+            # Historical positional API: history and the current image are supplied separately.
+            image_ids = torch.cat([self.image_ids(*image_grid, 10.0, reference.device),
+                                   self.image_ids(*image_grid, 0.0, reference.device),
+                                   torch.zeros(horizon, 4, device=reference.device)])
+            image_ids[-horizon:, 0] = 20
+            image_ids[-horizon:, 3] = torch.arange(horizon, device=reference.device)
+            clean = torch.cat([history, reference], dim=1)
+            image_ids = torch.cat([history_ids.to(image_ids), image_ids])
+            reference_valid = torch.ones(batch, image_length, dtype=torch.bool, device=reference.device)
+            condition_mask = torch.cat([history_valid.to(torch.bool), reference_valid], dim=1)
+        else:
+            # Packed conditions supply their exact positions and validity mask.
+            if any(value is None for value in (reference_ids, target_ids, condition_mask)):
+                raise ValueError("Packed conditions require reference_ids, target_ids and condition_mask together")
+            if any(value is not None for value in (image_grid, history, history_ids, history_valid)):
+                raise ValueError("Do not mix packed conditions with separate history/image-grid inputs")
+            assert reference_ids.shape == (image_length, 4) and target_ids.shape == (noisy_image.shape[1], 4)
+            assert condition_mask.shape == reference.shape[:2]
+            clean = reference
+            action_ids = reference_ids.new_zeros(horizon, 4)
+            action_ids[:, 0] = 20
+            action_ids[:, 3] = torch.arange(horizon, device=reference.device)
+            image_ids = torch.cat([reference_ids, target_ids, action_ids])
+        context, text_mask = self.pack_state(context, text_mask, state)
+        text_ids = image_ids.new_zeros(context.shape[1], 4)
         text_ids[:, 3] = torch.arange(context.shape[1], device=reference.device)
-        clean = torch.cat([history, reference], dim=1)
-        image_ids = torch.cat([history_ids.to(image_ids), image_ids])
-        reference_valid = torch.ones(batch, image_length, dtype=torch.bool, device=reference.device)
-        condition_image_mask = torch.cat([history_valid.to(torch.bool), reference_valid], dim=1)
         clean_length = clean.shape[1]
-        mask = self.attention_mask(text_mask, clean_length, image_length + horizon, condition_image_mask)
+        mask = self.attention_mask(text_mask, clean_length, noisy_image.shape[1] + horizon, condition_mask)
         prediction = self.transformer(
             hidden_states=torch.cat([clean, noisy_image, self.encode_action(noisy_action)], dim=1),
             encoder_hidden_states=context, timestep=timestep / 1000, img_ids=image_ids, txt_ids=text_ids,
             joint_attention_kwargs={"attention_mask": mask}, return_dict=False)[0]
-        end = clean_length + image_length
+        end = clean_length + noisy_image.shape[1]
         return prediction[:, clean_length:end], self.decode_action(prediction[:, end:])
 
 

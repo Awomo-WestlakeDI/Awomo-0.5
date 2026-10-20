@@ -21,18 +21,19 @@ Awomo-0.5 is a codebase for training, evaluating, and running embodied policies 
 - **Awomo-0.5I** (Awomo-0.5-Image) processes image observations.
 - **Awomo-0.5V** (Awomo-0.5-Video) processes video observations and temporal context.
 
-The release targets five embodied simulation benchmarks: LIBERO Plus, MolmoSpaces, RoboTwin 2.0, RoboDojo, and RoboCasa.
-This release contains the inference code and the RoboCasa365 evaluation; the training code and the other benchmarks will be released progressively.
+The release targets five embodied simulation benchmarks: LIBERO Plus, MolmoSpaces, RoboTwin 2.0, RoboDojo, and RoboCasa.This release contains Awomo-0.5I/0.5V inference, RoboCasa365 evaluation, and RoboDojo SFT. Other benchmark integrations will be released progressively.
 
 ## ✨ Highlights
 
-- 2 architecture variants under one training and evaluation interface (training code coming).
-- 5 benchmark adapters for embodied simulation evaluation (RoboCasa365 released, others coming).
+- 2 architecture variants under one training and evaluation interface (RoboDojo SFT released, others coming).
+- 5 benchmark adapters for embodied simulation evaluation (RoboCasa365/RoboDojo released, others coming).
 - 14 planned model releases.
 
 ## 🔔 News
 
-- 🔥 **2026.10.03**: Release RoboDojo checkpoint and evaluation code.
+- 🔥 **2026.10.20**: Add [RoboDojo SFT](training/robodojo/README.md) training code and XPolicyLab inference support.
+- **2026.10.09**: Add [RoboCasa365 evaluation](eval_robocasa365/README.md) for Awomo-0.5I and Awomo-0.5V.
+- **2026.10.03**: Release RoboDojo checkpoint and evaluation code.
 
 ## 📦 Checkpoints
 
@@ -40,7 +41,7 @@ Overall success rates are shown in parentheses.
 
 | **Awomo-0.5I** | **Awomo-0.5V** |
 | :-------- | :---------------- |
-| Base | Base |
+| [Base 🤗](https://huggingface.co/Auwomo/Awomo-0.5I-base) | Base |
 | LIBERO Plus (93.5) | LIBERO Plus (91.1) |
 | MolmoSpaces (65.3) | MolmoSpaces (64.5) |
 | RoboTwin 2.0 Full (96.1) | RoboTwin 2.0 Full |
@@ -48,12 +49,14 @@ Overall success rates are shown in parentheses.
 | RoboDojo (35.3, [🥈 #2](https://robodojo-benchmark.com/LeaderBoard)) | RoboDojo |
 | [RoboCasa365](eval_robocasa365/README.md) (64.4, [🤗](https://huggingface.co/Auwomo/Awomo-0.5I-RoboCasa365)) | [RoboCasa365](eval_robocasa365/README.md) (62.5, [🤗](https://huggingface.co/Auwomo/Awomo-0.5V-RoboCasa365)) |
 
-Released checkpoints are on [Hugging Face](https://huggingface.co/Auwomo); each includes `awomo_config.json` and `SHA256SUMS`.
+Released checkpoints are on [Hugging Face](https://huggingface.co/Auwomo); follow the model-specific evaluation instructions for their file layout.
 
 ## 📚 Documentation
 
 - [Deployment](docs/DEPLOYMENT.md): policy server environment and startup.
-- [RoboCasa365 evaluation](eval_robocasa365/README.md)
+- [RoboDojo SFT](training/robodojo/README.md): data index preparation, supplied normalization parameters and training configuration.
+- [RoboDojo inference in XPolicyLab](https://github.com/XPolicyLab/XPolicyLab/tree/main/policy/Awomo05): benchmark observation/action adaptation and evaluation entrypoints. Use the adapter version matching the checkpoint format.
+- [RoboCasa365 evaluation](eval_robocasa365/README.md): evaluation-only, added on 2026-10-09; the RoboDojo SFT update does not change its entrypoints.
 
 ## 📜 License
 
