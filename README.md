@@ -8,7 +8,7 @@
 
 <p><b>🖼️ Awomo-0.5I</b> | <b>🎥 Awomo-0.5V</b> | <a href="https://robodojo-benchmark.com/LeaderBoard"><b>🥈 #2 on RoboDojo</b></a></p>
 
-<p>🤗 Hugging Face: <a href="https://huggingface.co/Auwomo"><b>Auwomo</b></a> | 🤖 ModelScope: <b>TBD</b> | 📄 Paper: <b>TBD</b> | 🖥️ Demo: <b>TBD</b></p>
+<p>🌐 Project Page: <a href="https://awomo-westlakedi.github.io/Awomo-0.5-page/"><b>Awomo-0.5</b></a> | 🤗 Hugging Face: <a href="https://huggingface.co/Auwomo"><b>Auwomo</b></a> | 🤖 ModelScope: <b>TBD</b> | 📄 Paper: <b>TBD</b> | 🖥️ Demo: <b>TBD</b></p>
 
 <p><a href="#introduction">Introduction</a> | <a href="#checkpoints">Checkpoints</a> | <a href="#documentation">Documentation</a> | <a href="#citation">Citation</a></p>
 
