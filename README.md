@@ -6,9 +6,9 @@
 
 <h1>Awomo-0.5: World Action Model Pre-trained at Scale</h1>
 
-<p><b>🖼️ Awomo-0.5I</b> | <b>🎥 Awomo-0.5V</b> | <a href="https://robodojo-benchmark.com/LeaderBoard"><b>🥈 #2 on RoboDojo</b></a></p>
+<p><a href="https://robocasa.ai/leaderboard.html"><b>🥇 #1 on RoboCasa365</b></a> | <a href="https://molmospaces.allen.ai/benchmark"><b>🥈 #2 on MolmoSpaces</b></a> | <a href="https://robodojo-benchmark.com/LeaderBoard"><b>🥉 #3 on RoboDojo</b></a></p>
 
-<p>🌐 <a href="https://awomo-westlakedi.github.io/Awomo-0.5-page/"><b>Project Page</b></a> | 🤗 <a href="https://huggingface.co/Auwomo"><b>Hugging Face</b></a> | 🤖 ModelScope: <b>TBD</b> | 📄 Paper: <b>TBD</b> | 🖥️ Demo: <b>TBD</b></p>
+<p>🌐 <a href="https://awomo-westlakedi.github.io/Awomo-0.5-page/"><b>Project Page</b></a> | 🤗 <a href="https://huggingface.co/Auwomo"><b>Hugging Face</b></a> | 🤖 ModelScope: <b>TBD</b> | 📄 <a href="Awomo_0_5.pdf"><b>Paper</b></a> | 🖥️ Demo: <b>TBD</b></p>
 
 <p><a href="#introduction">Introduction</a> | <a href="#checkpoints">Checkpoints</a> | <a href="#documentation">Documentation</a> | <a href="#citation">Citation</a></p>
 
@@ -37,19 +37,24 @@ The release targets five embodied simulation benchmarks: LIBERO Plus, MolmoSpace
 
 ## 📦 Checkpoints
 
-Overall success rates are shown in parentheses.
+<div align="center">
+<table>
+<tr><th rowspan="2">Benchmark</th><th colspan="3">Awomo-0.5I</th><th colspan="3">Awomo-0.5V</th></tr>
+<tr><th>Result</th><th>Rank</th><th>Weights</th><th>Result</th><th>Rank</th><th>Weights</th></tr>
+<tr><td>Base</td><td align="center"></td><td align="center"></td><td align="center"><a href="https://huggingface.co/Auwomo/Awomo-0.5I-base">Hugging Face</a></td><td align="center"></td><td align="center"></td><td align="center"></td></tr>
+<tr><td>LIBERO Plus</td><td align="center">95.9%</td><td align="center"></td><td align="center"></td><td align="center">92.5%</td><td align="center"></td><td align="center"></td></tr>
+<tr><td>MolmoSpaces</td><td align="center">73.0%</td><td align="center"><a href="https://molmospaces.allen.ai/benchmark">#3</a></td><td align="center"></td><td align="center">73.4%</td><td align="center"><a href="https://molmospaces.allen.ai/benchmark">#2</a></td><td align="center"></td></tr>
+<tr><td>RoboCasa365</td><td align="center">64.4%</td><td align="center"><a href="https://robocasa.ai/leaderboard.html">#1</a></td><td align="center"><a href="https://huggingface.co/Auwomo/Awomo-0.5I-RoboCasa365">Hugging Face</a></td><td align="center">62.5%</td><td align="center"><a href="https://robocasa.ai/leaderboard.html">#3</a></td><td align="center"><a href="https://huggingface.co/Auwomo/Awomo-0.5V-RoboCasa365">Hugging Face</a></td></tr>
+<tr><td>RoboDojo (score / SR)</td><td align="center">35.3 / 29.6%</td><td align="center"><a href="https://robodojo-benchmark.com/LeaderBoard">#3</a></td><td align="center"></td><td align="center">32.4 / 25.6%</td><td align="center"></td><td align="center"></td></tr>
+<tr><td>RoboTwin 2.0 Full</td><td align="center">96.1%</td><td align="center"></td><td align="center"></td><td align="center">92.2%</td><td align="center"></td><td align="center"></td></tr>
+<tr><td>RoboTwin 2.0 Clean-2-Random</td><td align="center">86.2%</td><td align="center"></td><td align="center"></td><td align="center">74.7%</td><td align="center"></td><td align="center"></td></tr>
+</table>
+</div>
 
-| **Awomo-0.5I** | **Awomo-0.5V** |
-| :-------- | :---------------- |
-| [Base 🤗](https://huggingface.co/Auwomo/Awomo-0.5I-base) | Base |
-| LIBERO Plus (93.5) | LIBERO Plus (91.1) |
-| MolmoSpaces (65.3) | MolmoSpaces (64.5) |
-| RoboTwin 2.0 Full (96.1) | RoboTwin 2.0 Full |
-| RoboTwin 2.0 Clean-2-Random (79.2) | RoboTwin 2.0 Clean-2-Random |
-| RoboDojo (35.3, [🥈 #2](https://robodojo-benchmark.com/LeaderBoard)) | RoboDojo |
-| [RoboCasa365](eval_robocasa365/README.md) (64.4, [🤗](https://huggingface.co/Auwomo/Awomo-0.5I-RoboCasa365)) | [RoboCasa365](eval_robocasa365/README.md) (62.5, [🤗](https://huggingface.co/Auwomo/Awomo-0.5V-RoboCasa365)) |
-
-Released checkpoints are on [Hugging Face](https://huggingface.co/Auwomo); follow the model-specific evaluation instructions for their file layout.
+<p align="center">
+  <img src="assets/benchmark_radar_I.png" width="45%" alt="Awomo-0.5I benchmark performance">
+  <img src="assets/benchmark_radar_V.png" width="45%" alt="Awomo-0.5V benchmark performance">
+</p>
 
 ## 📚 Documentation
 
@@ -72,13 +77,6 @@ Parts of this repository are adapted from [PatchWAM](https://github.com/Tianheng
 ## 📝 Citation
 
 ```bibtex
-@software{awomo05,
-  author  = {{Awomo-WAM Team}},
-  title   = {Awomo-0.5},
-  version = {0.5},
-  year    = {2026},
-}
-
 @article{team2026awomo,
   title={Awomo-0.5 Technical Report},
   author={Team, Awomo-WAM},
