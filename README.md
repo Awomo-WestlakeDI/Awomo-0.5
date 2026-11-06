@@ -47,7 +47,7 @@ The release targets five embodied simulation benchmarks: LIBERO Plus, MolmoSpace
 <tr><td>RoboCasa365</td><td align="center">64.4%</td><td align="center"><a href="https://robocasa.ai/leaderboard.html">#1</a></td><td align="center"><a href="https://huggingface.co/Auwomo/Awomo-0.5I-RoboCasa365">Hugging Face</a></td><td align="center">62.5%</td><td align="center"><a href="https://robocasa.ai/leaderboard.html">#3</a></td><td align="center"><a href="https://huggingface.co/Auwomo/Awomo-0.5V-RoboCasa365">Hugging Face</a></td></tr>
 <tr><td>RoboDojo (score / SR)</td><td align="center">35.3 / 29.6%</td><td align="center"><a href="https://robodojo-benchmark.com/LeaderBoard">#3</a></td><td align="center"></td><td align="center">32.4 / 25.6%</td><td align="center"></td><td align="center"></td></tr>
 <tr><td>RoboTwin 2.0 Full</td><td align="center">96.1%</td><td align="center"></td><td align="center"></td><td align="center">92.2%</td><td align="center"></td><td align="center"></td></tr>
-<tr><td>RoboTwin 2.0 Clean-2-Random</td><td align="center">86.2%</td><td align="center"></td><td align="center"></td><td align="center">74.7%</td><td align="center"></td><td align="center"></td></tr>
+<tr><td>RoboTwin 2.0 C2R</td><td align="center">86.2%</td><td align="center"></td><td align="center"></td><td align="center">74.7%</td><td align="center"></td><td align="center"></td></tr>
 </table>
 </div>
 
